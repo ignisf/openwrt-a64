@@ -1,0 +1,51 @@
+From b5b7fcb14e1157e3ed5a8e0d1642c91db8ae1519 Mon Sep 17 00:00:00 2001
+From: Dimitar Gamishev <dgamishev@neterra.net>
+Date: Thu, 17 Mar 2022 11:24:12 +0200
+Subject: [PATCH 09/10] a64: dts: Revert dcdc6 to 1180mV. remove opp...
+
+---
+ .../arm64/boot/dts/allwinner/sun50i-a64-cpu-opp.dtsi | 12 ------------
+ .../boot/dts/allwinner/sun50i-a64-olinuxino-1G.dts   |  4 ++--
+ 2 files changed, 2 insertions(+), 14 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/allwinner/sun50i-a64-cpu-opp.dtsi b/arch/arm64/boot/dts/allwinner/sun50i-a64-cpu-opp.dtsi
+index 757df28d54b4..ba0cdc444efc 100644
+--- a/arch/arm64/boot/dts/allwinner/sun50i-a64-cpu-opp.dtsi
++++ b/arch/arm64/boot/dts/allwinner/sun50i-a64-cpu-opp.dtsi
+@@ -31,18 +31,6 @@ opp-960000000 {
+ 			opp-microvolt = <1160000>;
+ 			clock-latency-ns = <244144>; /* 8 32k periods */
+ 		};
+-
+-		opp-1008000000 {
+-			opp-hz = /bits/ 64 <1008000000>;
+-			opp-microvolt = <1200000>;
+-			clock-latency-ns = <244144>; /* 8 32k periods */
+-		};
+-
+-		opp-1056000000 {
+-			opp-hz = /bits/ 64 <1056000000>;
+-			opp-microvolt = <1240000>;
+-			clock-latency-ns = <244144>; /* 8 32k periods */
+-		};
+ 	};
+ };
+ 
+diff --git a/arch/arm64/boot/dts/allwinner/sun50i-a64-olinuxino-1G.dts b/arch/arm64/boot/dts/allwinner/sun50i-a64-olinuxino-1G.dts
+index be05501c5caa..261e5d3dcc06 100644
+--- a/arch/arm64/boot/dts/allwinner/sun50i-a64-olinuxino-1G.dts
++++ b/arch/arm64/boot/dts/allwinner/sun50i-a64-olinuxino-1G.dts
+@@ -216,8 +216,8 @@ &reg_dcdc1 {
+ 
+ &reg_dcdc2 {
+ 	regulator-always-on;
+-	regulator-min-microvolt = <1240000>;
+-	regulator-max-microvolt = <1300000>;
++	regulator-min-microvolt = <1180000>;
++	regulator-max-microvolt = <1180000>;
+ 	regulator-name = "vdd-cpux";
+ };
+ 
+-- 
+2.49.0
+

@@ -44,6 +44,60 @@ define U-Boot/a64-olinuxino-emmc
   ATF:=a64
 endef
 
+define U-Boot/a64-olinuxino-emmc
+  BUILD_SUBTARGET:=cortexa53
+  NAME:=Olimex A64-OLinuXino eMMC
+  BUILD_DEVICES:=olimex_a64-olinuxino-emmc
+  DEPENDS:=+PACKAGE_u-boot-olimex_a64-olinuxino-emmc:trusted-firmware-a-sunxi-a64
+  UENV:=a64
+  ATF:=a64
+endef
+
+define U-Boot/a64-olinuxino-1ge4gw
+  BUILD_SUBTARGET:=cortexa53
+  NAME:=Olimex A64-OLinuXino 1Ge4GW
+  BUILD_DEVICES:=olimex_a64-olinuxino-1ge4gw
+  DEPENDS:=+PACKAGE_u-boot-olimex_a64-olinuxino-1ge4gw:trusted-firmware-a-sunxi-a64
+  UENV:=a64
+  ATF:=a64
+endef
+
+define U-Boot/a64-olinuxino-1g
+  BUILD_SUBTARGET:=cortexa53
+  NAME:=Olimex A64-OLinuXino 1G
+  BUILD_DEVICES:=olimex_a64-olinuxino-1g
+  DEPENDS:=+PACKAGE_u-boot-olimex_a64-olinuxino-1g:trusted-firmware-a-sunxi-a64
+  UENV:=a64
+  ATF:=a64
+endef
+
+define U-Boot/a64-olinuxino-2ge8g
+  BUILD_SUBTARGET:=cortexa53
+  NAME:=Olimex A64-OLinuXino 2Ge8G-IND
+  BUILD_DEVICES:=olimex_a64-olinuxino-2ge8g
+  DEPENDS:=+PACKAGE_u-boot-olimex_a64-olinuxino-2ge8g:trusted-firmware-a-sunxi-a64
+  UENV:=a64
+  ATF:=a64
+endef
+
+define U-Boot/a64-olinuxino-1gs16m
+  BUILD_SUBTARGET:=cortexa53
+  NAME:=Olimex A64-OLinuXino 1Gs16M
+  BUILD_DEVICES:=olimex_a64-olinuxino-1gs16m
+  DEPENDS:=+PACKAGE_u-boot-olimex_a64-olinuxino-1gs16m:trusted-firmware-a-sunxi-a64
+  UENV:=a64
+  ATF:=a64
+endef
+
+define U-Boot/a64-olinuxino-1ge16gw
+  BUILD_SUBTARGET:=cortexa53
+  NAME:=Olimex A64-OLinuXino 1Ge16GW
+  BUILD_DEVICES:=olimex_a64-olinuxino-1ge16gw
+  DEPENDS:=+PACKAGE_u-boot-olimex_a64-olinuxino-1ge16gw:trusted-firmware-a-sunxi-a64
+  UENV:=a64
+  ATF:=a64
+endef
+
 define U-Boot/A10-OLinuXino-Lime
   BUILD_SUBTARGET:=cortexa8
   NAME:=A10 OLinuXino LIME
@@ -376,6 +430,11 @@ endef
 UBOOT_TARGETS := \
 	a64-olinuxino \
 	a64-olinuxino-emmc \
+	a64-olinuxino-1ge4gw \
+	a64-olinuxino-1g \
+	a64-olinuxino-2ge8g \
+	a64-olinuxino-1gs16m \
+	a64-olinuxino-1ge16gw \
 	A10-OLinuXino-Lime \
 	A13-OLinuXino \
 	A20-OLinuXino-Lime \

@@ -1,0 +1,35 @@
+From d07b3924c4f6659ae0116c3188ce036fdc977de6 Mon Sep 17 00:00:00 2001
+From: Stefan Saraev <stefan@saraev.ca>
+Date: Thu, 19 Nov 2020 19:00:56 +0200
+Subject: [PATCH 06/10] dts: a64: opp: meh > 1.10
+
+---
+ .../arm64/boot/dts/allwinner/sun50i-a64-cpu-opp.dtsi | 12 ------------
+ 1 file changed, 12 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/allwinner/sun50i-a64-cpu-opp.dtsi b/arch/arm64/boot/dts/allwinner/sun50i-a64-cpu-opp.dtsi
+index e39db51eb448..757df28d54b4 100644
+--- a/arch/arm64/boot/dts/allwinner/sun50i-a64-cpu-opp.dtsi
++++ b/arch/arm64/boot/dts/allwinner/sun50i-a64-cpu-opp.dtsi
+@@ -43,18 +43,6 @@ opp-1056000000 {
+ 			opp-microvolt = <1240000>;
+ 			clock-latency-ns = <244144>; /* 8 32k periods */
+ 		};
+-
+-		opp-1104000000 {
+-			opp-hz = /bits/ 64 <1104000000>;
+-			opp-microvolt = <1260000>;
+-			clock-latency-ns = <244144>; /* 8 32k periods */
+-		};
+-
+-		opp-1152000000 {
+-			opp-hz = /bits/ 64 <1152000000>;
+-			opp-microvolt = <1300000>;
+-			clock-latency-ns = <244144>; /* 8 32k periods */
+-		};
+ 	};
+ };
+ 
+-- 
+2.49.0
+

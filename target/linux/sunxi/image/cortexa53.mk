@@ -89,6 +89,53 @@ define Device/olimex_a64-olinuxino-emmc
 endef
 TARGET_DEVICES += olimex_a64-olinuxino-emmc
 
+define Device/olimex_a64-olinuxino-1ge4gw
+  DEVICE_VENDOR := Olimex
+  DEVICE_MODEL := A64-Olinuxino
+  DEVICE_VARIANT := 1Ge4GW
+  DEVICE_PACKAGES := kmod-rtl8723bs rtl8723bu-firmware
+  $(Device/sun50i-a64)
+  SUNXI_DTS := $$(SUNXI_DTS_DIR)$$(SOC)-olinuxino-1Ge4GW
+endef
+TARGET_DEVICES += olimex_a64-olinuxino-1ge4gw
+
+define Device/olimex_a64-olinuxino-1g
+  DEVICE_VENDOR := Olimex
+  DEVICE_MODEL := A64-Olinuxino
+  DEVICE_VARIANT := 1G
+  $(Device/sun50i-a64)
+  SUNXI_DTS := $$(SUNXI_DTS_DIR)$$(SOC)-olinuxino-1G
+endef
+TARGET_DEVICES += olimex_a64-olinuxino-1g
+
+define Device/olimex_a64-olinuxino-2ge8g
+  DEVICE_VENDOR := Olimex
+  DEVICE_MODEL := A64-Olinuxino
+  DEVICE_VARIANT := 2Ge8G-IND
+  $(Device/sun50i-a64)
+  SUNXI_DTS := $$(SUNXI_DTS_DIR)$$(SOC)-olinuxino-2Ge8G
+endef
+TARGET_DEVICES += olimex_a64-olinuxino-2ge8g
+
+define Device/olimex_a64-olinuxino-1gs16m
+  DEVICE_VENDOR := Olimex
+  DEVICE_MODEL := A64-Olinuxino
+  DEVICE_VARIANT := 1Gs16M
+  $(Device/sun50i-a64)
+  SUNXI_DTS := $$(SUNXI_DTS_DIR)$$(SOC)-olinuxino-1Gs16M
+endef
+TARGET_DEVICES += olimex_a64-olinuxino-1gs16m
+
+define Device/olimex_a64-olinuxino-1ge16gw
+  DEVICE_VENDOR := Olimex
+  DEVICE_MODEL := A64-Olinuxino
+  DEVICE_VARIANT := 1Ge16GW
+  DEVICE_PACKAGES := kmod-rtl8723bs rtl8723bu-firmware
+  $(Device/sun50i-a64)
+  SUNXI_DTS := $$(SUNXI_DTS_DIR)$$(SOC)-olinuxino-1Ge16GW
+endef
+TARGET_DEVICES += olimex_a64-olinuxino-1ge16gw
+
 define Device/pine64_pine64-plus
   DEVICE_VENDOR := Pine64
   DEVICE_MODEL := Pine64+

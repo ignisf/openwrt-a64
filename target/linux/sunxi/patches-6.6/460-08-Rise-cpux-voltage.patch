@@ -1,0 +1,25 @@
+From 2dda1c9dbd27dce87f333882062448e8dfd2da9d Mon Sep 17 00:00:00 2001
+From: hehopmajieh <hehopmajieh@debian.bg>
+Date: Thu, 17 Mar 2022 14:56:04 +0200
+Subject: [PATCH 08/10] Rise cpux voltage
+
+---
+ arch/arm64/boot/dts/allwinner/sun50i-a64-olinuxino-1G.dts | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/arch/arm64/boot/dts/allwinner/sun50i-a64-olinuxino-1G.dts b/arch/arm64/boot/dts/allwinner/sun50i-a64-olinuxino-1G.dts
+index d80a47aa98e8..be05501c5caa 100644
+--- a/arch/arm64/boot/dts/allwinner/sun50i-a64-olinuxino-1G.dts
++++ b/arch/arm64/boot/dts/allwinner/sun50i-a64-olinuxino-1G.dts
+@@ -216,7 +216,7 @@ &reg_dcdc1 {
+ 
+ &reg_dcdc2 {
+ 	regulator-always-on;
+-	regulator-min-microvolt = <1040000>;
++	regulator-min-microvolt = <1240000>;
+ 	regulator-max-microvolt = <1300000>;
+ 	regulator-name = "vdd-cpux";
+ };
+-- 
+2.49.0
+

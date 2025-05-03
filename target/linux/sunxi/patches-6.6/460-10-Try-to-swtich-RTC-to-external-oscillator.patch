@@ -1,0 +1,61 @@
+From 2f1ce03b9be8f85ec7b91c02c88a4bbb939cb67b Mon Sep 17 00:00:00 2001
+From: hehopmajieh <hehopmajieh@debian.bg>
+Date: Tue, 11 Oct 2022 09:55:26 +0300
+Subject: [PATCH 10/10] Try to swtich RTC to external oscillator
+
+---
+ drivers/rtc/rtc-sunxi.c | 21 +++++++++++++++++++++
+ 1 file changed, 21 insertions(+)
+
+diff --git a/drivers/rtc/rtc-sunxi.c b/drivers/rtc/rtc-sunxi.c
+index 5cab9953c44f..abd05cb992e5 100644
+--- a/drivers/rtc/rtc-sunxi.c
++++ b/drivers/rtc/rtc-sunxi.c
+@@ -18,9 +18,15 @@
+ #include <linux/rtc.h>
+ #include <linux/types.h>
+ 
++#define SUNXI_LOSC_CTRL_KEY			0x16AA0000
++#define SUNXI_LOSC_CTRL_AUTO_SWT_EN		BIT(14)
++
+ #define SUNXI_LOSC_CTRL				0x0000
+ #define SUNXI_LOSC_CTRL_RTC_HMS_ACC		BIT(8)
+ #define SUNXI_LOSC_CTRL_RTC_YMD_ACC		BIT(7)
++#define SUNXI_LOSC_CTRL_EXT_GSM1		BIT(3)
++#define SUNXI_LOSC_CTRL_EXT_GSM0		BIT(2)
++#define SUNXI_LOSC_CTRL_SRC_SEL			BIT(0)
+ 
+ #define SUNXI_RTC_YMD				0x0004
+ 
+@@ -421,6 +427,8 @@ static int sunxi_rtc_probe(struct platform_device *pdev)
+ {
+ 	struct sunxi_rtc_dev *chip;
+ 	int ret;
++	
++	uint32_t loscctrl;
+ 
+ 	chip = devm_kzalloc(&pdev->dev, sizeof(*chip), GFP_KERNEL);
+ 	if (!chip)
+@@ -453,6 +461,19 @@ static int sunxi_rtc_probe(struct platform_device *pdev)
+ 		return -ENODEV;
+ 	}
+ 
++	loscctrl = readl(chip->base + SUNXI_LOSC_CTRL);
++	loscctrl &= ~(SUNXI_LOSC_CTRL_AUTO_SWT_EN);
++	loscctrl |= (SUNXI_LOSC_CTRL_SRC_SEL | SUNXI_LOSC_CTRL_KEY);
++	loscctrl |= SUNXI_LOSC_CTRL_EXT_GSM1;
++	writel(loscctrl, chip->base + SUNXI_LOSC_CTRL);
++	udelay(100);
++
++	loscctrl = readl(chip->base + SUNXI_LOSC_CTRL);
++	if (!(loscctrl & SUNXI_LOSC_CTRL_SRC_SEL)) {
++		dev_err(&pdev->dev, "Error: Set LOSC to external failed. RTC time may be wrong\n");
++	}
++
++
+ 	/* clear the alarm count value */
+ 	writel(0, chip->base + SUNXI_ALRM_DHMS);
+ 
+-- 
+2.49.0
+
